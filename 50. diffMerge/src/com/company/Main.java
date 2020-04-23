@@ -2,22 +2,21 @@ package com.company;
 
 public class Main {
     public static void main(String[] args) {
-        printMegaBytesAndKiloBytes(2500);
-        printMegaBytesAndKiloBytes(-1024);
-        printMegaBytesAndKiloBytes(5000);
+        shouldWakeUp(true, 1);
+        shouldWakeUp(false, 2);
+        shouldWakeUp(true, 8);
+        shouldWakeUp(true, -1);
     }
-    public static void printMegaBytesAndKiloBytes(int kiloBytes) {
-        int megaBytes;
-        int kiloBytesRemaining;
-
-        if(kiloBytes < 0) {
-            System.out.println("Invalid Value");
-            return;
+    public static boolean shouldWakeUp(boolean barking, int hourOfTheDay) {
+        if (hourOfTheDay < 0 || hourOfTheDay > 23) {
+            System.out.println("false");
+            return false;
         }
-
-        megaBytes = Math.round(kiloBytes / 1024);
-        kiloBytesRemaining = kiloBytes % 1024;
-
-        System.out.println(kiloBytes + " KB = " + megaBytes + " MB and " + kiloBytesRemaining + " KB");
+        if ((hourOfTheDay < 8 || hourOfTheDay > 22) && barking) {
+            System.out.println("true");
+            return true;
+        }
+        System.out.println("false");
+        return false;
     }
 }
