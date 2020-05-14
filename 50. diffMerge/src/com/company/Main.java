@@ -2,32 +2,23 @@ package com.company;
 
 public class Main {
     public static void main(String[] args) {
-    isLeapYear(-1600);
-    isLeapYear(1600);
-    isLeapYear(2017);
-    isLeapYear(2000);
+        areEqualByThreeDecimalPlaces(-3.1756, -3.1755);
+        areEqualByThreeDecimalPlaces(3.175, 3.176);
+        areEqualByThreeDecimalPlaces(3.0, 3.0);
+        areEqualByThreeDecimalPlaces(-3.123, 3.123);
     }
-    public static boolean isLeapYear(int year) {
-        if(year <= 0 || year >= 10000) {
-            System.out.println(false);
-            return false;
+    public static boolean areEqualByThreeDecimalPlaces(double num1, double num2) {
+       num1 = num1 * 1000;
+       num2 = num2 * 1000;
+
+       num1 = (int) num1;
+       num2 = (int) num2;
+
+        if(num1 == num2) {
+            System.out.println(true);
+            return true;
         }
-        if(year % 4 == 0) {
-            if(year % 100 == 0) {
-                if(year % 400 == 0) {
-                    System.out.println(true);
-                    return true;
-                } else {
-                    System.out.println(false);
-                    return false;
-                }
-            } else {
-                System.out.println(true);
-                return true;
-            }
-        } else {
-            System.out.println(false);
-            return false;
-        }
+        System.out.println(false);
+        return false;
     }
 }
