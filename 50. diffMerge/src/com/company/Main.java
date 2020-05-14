@@ -2,16 +2,29 @@ package com.company;
 
 public class Main {
     public static void main(String[] args) {
-        hasEqualSum(1, 1, 1);
-        hasEqualSum(1,1,2);
-        hasEqualSum(1,-1,2);
+      calcFeetAndInchesToCentimeters(3,5);
+      calcFeetAndInchesToCentimeters(3,13);
+      calcFeetAndInchesToCentimeters(4);
+      calcFeetAndInchesToCentimeters(445);
     }
-    public static boolean hasEqualSum(int num1, int num2, int num3) {
-
-       if (num1 + num2 == num3) {
-          return true;
+    public static double calcFeetAndInchesToCentimeters(int feet, int inches) {
+       if(feet < 0 || inches < 0 || inches > 12) {
+          System.out.println(-1);
+          return -1;
        }
-
-       return false;
+       double centimeters = ((feet * 12) + inches) * 2.54;
+       System.out.println(centimeters);
+       return centimeters;
     }
+
+    public static double calcFeetAndInchesToCentimeters(int inches) {
+       if(inches < 0 || inches > 12) {
+          System.out.println(-1);
+          return -1;
+       }
+       double centimeters = inches * 2.54;
+       System.out.println(centimeters);
+       return centimeters;
+    }
+
 }
