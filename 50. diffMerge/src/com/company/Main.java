@@ -2,29 +2,28 @@ package com.company;
 
 public class Main {
     public static void main(String[] args) {
-      calcFeetAndInchesToCentimeters(3,5);
-      calcFeetAndInchesToCentimeters(3,13);
-      calcFeetAndInchesToCentimeters(4);
-      calcFeetAndInchesToCentimeters(445);
+     String answer = getDurationString(223324);
+     System.out.println(answer);
     }
-    public static double calcFeetAndInchesToCentimeters(int feet, int inches) {
-       if(feet < 0 || inches < 0 || inches > 12) {
-          System.out.println(-1);
-          return -1;
-       }
-       double centimeters = ((feet * 12) + inches) * 2.54;
-       System.out.println(centimeters);
-       return centimeters;
+    public static String getDurationString(int minutes, int seconds) {
+      if (minutes < 0 || seconds < 0 || seconds > 59) {
+         return "Invalid value";
+      }
+      int hours = 0;
+      while (minutes > 59) {
+         hours++;
+         minutes -= 60;
+      }
+      return hours + "h " + minutes + "m " + seconds + "s ";
     }
+    public static String getDurationString( int seconds) {
+      if (seconds < 0) {
+         return "Invalid value";
+      }
+      int minutes = seconds / 60;
+      seconds = seconds % 60;
 
-    public static double calcFeetAndInchesToCentimeters(int inches) {
-       if(inches < 0 || inches > 12) {
-          System.out.println(-1);
-          return -1;
-       }
-       double centimeters = inches * 2.54;
-       System.out.println(centimeters);
-       return centimeters;
+      return getDurationString(minutes, seconds);
     }
 
 }
