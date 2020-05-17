@@ -1,29 +1,22 @@
 package com.company;
 
 public class Main {
-    public static void main(String[] args) {
-     String answer = getDurationString(223324);
-     System.out.println(answer);
-    }
-    public static String getDurationString(int minutes, int seconds) {
-      if (minutes < 0 || seconds < 0 || seconds > 59) {
-         return "Invalid value";
-      }
-      int hours = 0;
-      while (minutes > 59) {
-         hours++;
-         minutes -= 60;
-      }
-      return hours + "h " + minutes + "m " + seconds + "s ";
-    }
-    public static String getDurationString( int seconds) {
-      if (seconds < 0) {
-         return "Invalid value";
-      }
-      int minutes = seconds / 60;
-      seconds = seconds % 60;
 
-      return getDurationString(minutes, seconds);
+   private static final String INVALID_VALUE_MESSAGE = "Invalid value";
+    public static void main(String[] args) {
+      printYearsAndDays(525600);
+      printYearsAndDays(1051200);
+      printYearsAndDays(561600);
+    }
+    public static void printYearsAndDays(long minutes) {
+      if(minutes < 0) {
+         System.out.println(INVALID_VALUE_MESSAGE);
+      }
+      long days = minutes / 1440;
+      minutes = minutes % 1440;
+      long years = days / 365;
+      days = days % 365;
+      System.out.println(years + "y " + days + "d " + minutes + "m ");
     }
 
 }
