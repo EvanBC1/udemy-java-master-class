@@ -4,19 +4,21 @@ public class Main {
 
    private static final String INVALID_VALUE_MESSAGE = "Invalid value";
     public static void main(String[] args) {
-      printYearsAndDays(525600);
-      printYearsAndDays(1051200);
-      printYearsAndDays(561600);
+       printEqual(1, 1, 1);
+       printEqual(1, 1, 2);
+       printEqual(-1, -1, -1);
+       printEqual(1, 2, 3);
     }
-    public static void printYearsAndDays(long minutes) {
-      if(minutes < 0) {
-         System.out.println(INVALID_VALUE_MESSAGE);
-      }
-      long days = minutes / 1440;
-      minutes = minutes % 1440;
-      long years = days / 365;
-      days = days % 365;
-      System.out.println(years + "y " + days + "d " + minutes + "m ");
+    public static void printEqual(int num1, int num2, int num3) {
+       if (num1 < 0 || num2 < 0 || num3 < 0) {
+          System.out.println("Invalid Value");
+       } else if (num1 == num2 && num1 == num3) {
+          System.out.println("All numbers are equal");
+       } else if (num1 != num2 && num1 != num3 && num2 != num3) {
+          System.out.println("All numbers are different");
+       } else {
+          System.out.println("Neither all are equal or different");
+       }
     }
 
 }
