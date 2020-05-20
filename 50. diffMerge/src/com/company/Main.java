@@ -1,24 +1,27 @@
 package com.company;
 
+import java.util.Scanner;
+
 public class Main {
-
-   private static final String INVALID_VALUE_MESSAGE = "Invalid value";
     public static void main(String[] args) {
-       System.out.println(isCatPlaying(true, 10));
-       System.out.println(isCatPlaying(false, 36));
-       System.out.println(isCatPlaying(false, 35));
+      System.out.println("This program will to 10 numbers that you enter and then return the sum of those numbers");
+       Scanner sc = new Scanner(System.in);
+       int sum = 0;
+      for(int i = 0; i < 3; i++) {
+         System.out.println("Enter integer " + (i + 1) + " below:");
+         if(sc.hasNextInt()) {
+            sum += sc.nextInt();
+         } else {
+            System.out.println("Invalid input");
+            i--;
+         }
+         sc.nextLine();
+      }
+      System.out.println(sum);
 
-    }
-    public static boolean isCatPlaying(boolean summer, int temperature) {
-      int minTemperature = 25;
-      int maxTemperature = 35;
-       if (summer) {
-          maxTemperature += 10;
-       }
-       if (temperature >= minTemperature && temperature <= maxTemperature) {
-          return true;
-       }
-       return false;
+      sc.close();
+
+
     }
 
 }
