@@ -1,33 +1,47 @@
 package com.company;
 
-import java.util.Scanner;
-
 public class Main {
    public static void main(String[] args) {
-      inputThenPrintSumAndAverage();
+     System.out.println(getBucketCount(-3.4, 2.1, 1.5, 2));
+     System.out.println(getBucketCount(3.4, 2.1, 1.5, 2));
+     System.out.println(getBucketCount(2.75, 3.25, 2.5, 1));
+
+     System.out.println(getBucketCount(-3.4, 2.1, 1.5));
+     System.out.println(getBucketCount(3.4, 2.1, 1.5));
+     System.out.println(getBucketCount(7.25, 4.3, 2.35));
+
+     System.out.println(getBucketCount(3.4, 1.5));
+     System.out.println(getBucketCount(6.26, 2.2));
+     System.out.println(getBucketCount(3.26, .75));
    }
 
-   public static void inputThenPrintSumAndAverage() {
-
-      Scanner sc = new Scanner(System.in);
-      boolean numbersOnly = true;
-      int sum = 0;
-      long average = 0;
-      int currentInt = 0;
-      int count = 0;
-
-      while (numbersOnly) {
-         if (!sc.hasNextInt()) {
-            System.out.println("SUM = " + sum + " AVG = " + average);
-            return;
-         }
-
-         count++;
-         currentInt = sc.nextInt();
-         sum += currentInt;
-
-         average = Math.round((double) sum / (double) count);
+   public static int getBucketCount(double width, double height, double areaPerBucket, int extraBuckets) {
+      if (width <= 0 || height <= 0 || areaPerBucket <= 0 || extraBuckets < 0)  {
+         return -1;
       }
-      sc.close();
+      double tempBucketsNeeded = (( width * height) / areaPerBucket) - extraBuckets;
+      tempBucketsNeeded = Math.ceil(tempBucketsNeeded);
+      int bucketsNeeded = (int) tempBucketsNeeded;
+      return bucketsNeeded;
+   }
+
+   public static int getBucketCount(double width, double height, double areaPerBucket) {
+      if (width <= 0 || height <= 0 || areaPerBucket <= 0)  {
+         return -1;
+      }
+      double tempBucketsNeeded = (( width * height) / areaPerBucket);
+      tempBucketsNeeded = Math.ceil(tempBucketsNeeded);
+      int bucketsNeeded = (int) tempBucketsNeeded;
+      return bucketsNeeded;
+   }
+
+   public static int getBucketCount(double area, double areaPerBucket) {
+      if (area <= 0 || areaPerBucket <= 0)  {
+         return -1;
+      }
+      double tempBucketsNeeded = area / areaPerBucket;
+      tempBucketsNeeded = Math.ceil(tempBucketsNeeded);
+      int bucketsNeeded = (int) tempBucketsNeeded;
+      return bucketsNeeded;
    }
 }
